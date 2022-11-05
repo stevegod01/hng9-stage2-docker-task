@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web-app:
+    image: stevegod/frontend-app:1.0
+    ports:
+      - 3000:3000
+
+  backend-api:
+    image: stevegod/backend-app:1.0
+    ports:
+      - 8000:8000
