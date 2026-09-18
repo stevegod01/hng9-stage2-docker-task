@@ -1,16 +1,9 @@
-# Dockerfile
-
-# We use the latest version of the base image
+# Historical React development server, not a production image.
 FROM node:18.12.0
-
-
-# Mounts the application code to the image
 WORKDIR /app
-COPY package.json ./
-
-
-# runs the production server
-RUN npm cache verify
-RUN npm i
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
 COPY . .
+ENV NODE_OPTIONS=--openssl-legacy-provider
+EXPOSE 3000
 CMD ["npm", "start"]
